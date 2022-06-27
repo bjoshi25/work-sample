@@ -12,7 +12,6 @@ const APIhash = process.env.REACT_APP_MarvelHash;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// http://gateway.marvel.com/v1/public/comics?ts=1&apikey=1234&hash=ffd275c5130566a2916217b101f26150
 
 app.get('/:character', (req, res) => {
 
@@ -21,7 +20,6 @@ app.get('/:character', (req, res) => {
 
   axios.get(APIrequestURL)
     .then((response) => {
-      // console.log('response from API',response.data.data.results );
       res.status(200).send(response.data.data.results);
     })
     .catch((error) => {

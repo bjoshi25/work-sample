@@ -5,14 +5,19 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 import ListSubheader from '@mui/material/ListSubheader';
 import IconButton from '@mui/material/IconButton';
 import InfoModal from './InfoModal.jsx';
+import Skeleton from '@mui/material/Skeleton';
 
 export default function ComicGallery(props) {
 
   const comicsData = props.comics.data;
 
   return (
-    comicsData === undefined ? <></> :
-    <ImageList sx={{ width: 500, height: 1000 }}>
+    !Array.isArray (comicsData) ?
+    <>
+      <Skeleton variant="rectangular" width={500} height={800} />
+    </>
+    :
+    <ImageList sx={{ width: 500, height: 800 }}>
       <ImageListItem key="Subheader" cols={2}>
         <ListSubheader component="div">{props.character}</ListSubheader>
       </ImageListItem>
